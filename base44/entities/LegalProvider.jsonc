@@ -1,0 +1,114 @@
+{
+  "name": "LegalProvider",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "org_type": {
+      "type": "string",
+      "enum": [
+        "nonprofit",
+        "legal_aid",
+        "pro_bono",
+        "community_org",
+        "attorney",
+        "workshop"
+      ],
+      "default": "nonprofit"
+    },
+    "boroughs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "languages": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "cost": {
+      "type": "string",
+      "enum": [
+        "free",
+        "sliding_scale",
+        "affordable",
+        "paid"
+      ],
+      "default": "free"
+    },
+    "services": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "modality": {
+      "type": "string",
+      "enum": [
+        "in_person",
+        "virtual",
+        "both"
+      ],
+      "default": "both"
+    },
+    "phone": {
+      "type": "string"
+    },
+    "website": {
+      "type": "string"
+    },
+    "address": {
+      "type": "string"
+    },
+    "lat": {
+      "type": "number",
+      "description": "Latitude for the map"
+    },
+    "lng": {
+      "type": "number",
+      "description": "Longitude for the map"
+    },
+    "hours": {
+      "type": "string"
+    },
+    "description_es": {
+      "type": "string"
+    },
+    "description_en": {
+      "type": "string"
+    },
+    "verified": {
+      "type": "boolean",
+      "default": true
+    },
+    "verification_source": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "name",
+    "cost",
+    "modality"
+  ],
+  "rls": {
+    "read": {},
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

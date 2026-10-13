@@ -1,0 +1,130 @@
+{
+  "name": "Case",
+  "type": "object",
+  "properties": {
+    "household_code": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "case_type": {
+      "type": "string",
+      "enum": [
+        "daca",
+        "work_permit",
+        "green_card",
+        "visa",
+        "citizenship",
+        "asylum",
+        "tps",
+        "other"
+      ],
+      "default": "other"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "planning",
+        "in_progress",
+        "waiting",
+        "approved",
+        "closed"
+      ],
+      "default": "planning"
+    },
+    "current_stage": {
+      "type": "string"
+    },
+    "next_step": {
+      "type": "string"
+    },
+    "next_deadline": {
+      "type": "string",
+      "format": "date"
+    },
+    "attorney_name": {
+      "type": "string"
+    },
+    "attorney_contact": {
+      "type": "string"
+    },
+    "notes": {
+      "type": "string"
+    },
+    "shared": {
+      "type": "boolean",
+      "default": false
+    },
+    "workspace_id": {
+      "type": "string"
+    },
+    "members": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "household_code",
+    "title",
+    "case_type"
+  ],
+  "rls": {
+    "read": {
+      "$or": [
+        {
+          "created_by_id": "{{user.id}}"
+        },
+        {
+          "data.members": "{{user.id}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "create": {},
+    "update": {
+      "$or": [
+        {
+          "created_by_id": "{{user.id}}"
+        },
+        {
+          "data.members": {
+            "$in": [
+              "{{user.id}}"
+            ]
+          }
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "delete": {
+      "$or": [
+        {
+          "created_by_id": "{{user.id}}"
+        },
+        {
+          "data.members": {
+            "$in": [
+              "{{user.id}}"
+            ]
+          }
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    }
+  }
+}

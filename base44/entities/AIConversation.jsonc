@@ -1,0 +1,67 @@
+{
+  "name": "AIConversation",
+  "type": "object",
+  "properties": {
+    "household_code": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "lang": {
+      "type": "string",
+      "enum": [
+        "es",
+        "en"
+      ],
+      "default": "es"
+    },
+    "last_message_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "required": [
+    "household_code",
+    "title"
+  ],
+  "rls": {
+    "read": {
+      "$or": [
+        {
+          "created_by_id": "{{user.id}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "create": {},
+    "update": {
+      "$or": [
+        {
+          "created_by_id": "{{user.id}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "delete": {
+      "$or": [
+        {
+          "created_by_id": "{{user.id}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    }
+  }
+}

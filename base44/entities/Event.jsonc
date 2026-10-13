@@ -1,0 +1,97 @@
+{
+  "name": "Event",
+  "type": "object",
+  "properties": {
+    "title_es": {
+      "type": "string"
+    },
+    "title_en": {
+      "type": "string"
+    },
+    "description_es": {
+      "type": "string"
+    },
+    "description_en": {
+      "type": "string"
+    },
+    "event_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "start_time": {
+      "type": "string"
+    },
+    "end_time": {
+      "type": "string"
+    },
+    "borough": {
+      "type": "string",
+      "enum": [
+        "queens",
+        "bronx",
+        "brooklyn",
+        "manhattan",
+        "staten_island",
+        "virtual"
+      ]
+    },
+    "address": {
+      "type": "string"
+    },
+    "lat": {
+      "type": "number",
+      "description": "Latitude for the map"
+    },
+    "lng": {
+      "type": "number",
+      "description": "Longitude for the map"
+    },
+    "modality": {
+      "type": "string",
+      "enum": [
+        "in_person",
+        "virtual",
+        "both"
+      ],
+      "default": "in_person"
+    },
+    "org_name": {
+      "type": "string"
+    },
+    "languages": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "cost": {
+      "type": "string",
+      "default": "free"
+    },
+    "registration_url": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "title_es",
+    "event_date"
+  ],
+  "rls": {
+    "read": {},
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

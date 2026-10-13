@@ -1,0 +1,72 @@
+{
+  "name": "SavedResource",
+  "type": "object",
+  "properties": {
+    "household_code": {
+      "type": "string"
+    },
+    "item_type": {
+      "type": "string",
+      "enum": [
+        "legal_provider",
+        "resource",
+        "event"
+      ],
+      "default": "legal_provider"
+    },
+    "item_id": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "subtitle": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "household_code",
+    "item_type",
+    "item_id",
+    "name"
+  ],
+  "rls": {
+    "read": {
+      "$or": [
+        {
+          "created_by_id": "{{user.id}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "create": {},
+    "update": {
+      "$or": [
+        {
+          "created_by_id": "{{user.id}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "delete": {
+      "$or": [
+        {
+          "created_by_id": "{{user.id}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    }
+  }
+}

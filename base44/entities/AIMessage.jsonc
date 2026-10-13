@@ -1,0 +1,75 @@
+{
+  "name": "AIMessage",
+  "type": "object",
+  "properties": {
+    "household_code": {
+      "type": "string"
+    },
+    "conversation_id": {
+      "type": "string"
+    },
+    "role": {
+      "type": "string",
+      "enum": [
+        "user",
+        "assistant"
+      ],
+      "default": "user"
+    },
+    "content": {
+      "type": "string"
+    },
+    "lang": {
+      "type": "string",
+      "enum": [
+        "es",
+        "en"
+      ],
+      "default": "es"
+    }
+  },
+  "required": [
+    "conversation_id",
+    "role",
+    "content"
+  ],
+  "rls": {
+    "read": {
+      "$or": [
+        {
+          "created_by_id": "{{user.id}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "create": {},
+    "update": {
+      "$or": [
+        {
+          "created_by_id": "{{user.id}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "delete": {
+      "$or": [
+        {
+          "created_by_id": "{{user.id}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    }
+  }
+}

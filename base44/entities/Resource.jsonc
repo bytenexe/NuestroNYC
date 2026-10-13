@@ -1,0 +1,67 @@
+{
+  "name": "Resource",
+  "type": "object",
+  "properties": {
+    "title_es": {
+      "type": "string"
+    },
+    "title_en": {
+      "type": "string"
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "know_your_rights",
+        "workplace",
+        "school",
+        "family_plan",
+        "health",
+        "finance",
+        "legal_process",
+        "safety",
+        "grief"
+      ],
+      "default": "know_your_rights"
+    },
+    "summary_es": {
+      "type": "string"
+    },
+    "summary_en": {
+      "type": "string"
+    },
+    "body_es": {
+      "type": "string"
+    },
+    "body_en": {
+      "type": "string"
+    },
+    "source_name": {
+      "type": "string"
+    },
+    "source_url": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "title_es",
+    "category"
+  ],
+  "rls": {
+    "read": {},
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

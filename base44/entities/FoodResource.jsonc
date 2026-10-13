@@ -1,0 +1,91 @@
+{
+  "name": "FoodResource",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "org_type": {
+      "type": "string",
+      "enum": [
+        "food_bank",
+        "pantry",
+        "hot_meals",
+        "snap_friendly",
+        "community_farm"
+      ],
+      "default": "pantry"
+    },
+    "boroughs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "address": {
+      "type": "string"
+    },
+    "lat": {
+      "type": "number",
+      "description": "Latitude for the map"
+    },
+    "lng": {
+      "type": "number",
+      "description": "Longitude for the map"
+    },
+    "phone": {
+      "type": "string"
+    },
+    "website": {
+      "type": "string"
+    },
+    "hours": {
+      "type": "string"
+    },
+    "accepts_snap": {
+      "type": "boolean",
+      "default": false
+    },
+    "languages": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "description_es": {
+      "type": "string"
+    },
+    "description_en": {
+      "type": "string"
+    },
+    "verified": {
+      "type": "boolean",
+      "default": true
+    },
+    "verification_source": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "name",
+    "org_type"
+  ],
+  "rls": {
+    "read": {},
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

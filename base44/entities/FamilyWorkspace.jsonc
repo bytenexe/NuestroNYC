@@ -1,0 +1,83 @@
+{
+  "name": "FamilyWorkspace",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Family workspace name"
+    },
+    "join_code": {
+      "type": "string",
+      "description": "Code a family member uses to request access"
+    },
+    "mfa_code": {
+      "type": "string",
+      "description": "Shared family verification code (extra MFA step)"
+    },
+    "owner_email": {
+      "type": "string"
+    },
+    "member_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Authorized member user ids"
+    },
+    "member_emails": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "name",
+    "join_code",
+    "mfa_code"
+  ],
+  "rls": {
+    "read": {
+      "$or": [
+        {
+          "data.member_ids": "{{user.id}}"
+        },
+        {
+          "created_by_id": "{{user.id}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "create": {
+      "created_by_id": "{{user.id}}"
+    },
+    "update": {
+      "$or": [
+        {
+          "created_by_id": "{{user.id}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "delete": {
+      "$or": [
+        {
+          "created_by_id": "{{user.id}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    }
+  }
+}

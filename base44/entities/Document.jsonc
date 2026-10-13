@@ -1,0 +1,136 @@
+{
+  "name": "Document",
+  "type": "object",
+  "properties": {
+    "household_code": {
+      "type": "string",
+      "description": "Private family space code"
+    },
+    "title": {
+      "type": "string"
+    },
+    "doc_type": {
+      "type": "string",
+      "enum": [
+        "daca",
+        "work_permit",
+        "green_card",
+        "passport",
+        "visa",
+        "residency_card",
+        "citizenship_application",
+        "birth_certificate",
+        "tax_record",
+        "legal_document",
+        "other"
+      ]
+    },
+    "case_id": {
+      "type": "string"
+    },
+    "file_uri": {
+      "type": "string",
+      "description": "Private storage uri"
+    },
+    "file_name": {
+      "type": "string"
+    },
+    "issue_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "expiry_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "notes": {
+      "type": "string"
+    },
+    "ai_summary": {
+      "type": "string",
+      "description": "Plain-language summary produced by Luz"
+    },
+    "ai_key_dates": {
+      "type": "string",
+      "description": "Dates Luz detected in the document"
+    },
+    "shared": {
+      "type": "boolean",
+      "default": false,
+      "description": "Shared with the verified family workspace"
+    },
+    "workspace_id": {
+      "type": "string",
+      "description": "Family workspace this record is shared with"
+    },
+    "members": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Authorized member user ids when shared"
+    }
+  },
+  "required": [
+    "household_code",
+    "title",
+    "doc_type",
+    "file_uri"
+  ],
+  "rls": {
+    "read": {
+      "$or": [
+        {
+          "created_by_id": "{{user.id}}"
+        },
+        {
+          "data.members": "{{user.id}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "create": {},
+    "update": {
+      "$or": [
+        {
+          "created_by_id": "{{user.id}}"
+        },
+        {
+          "data.members": {
+            "$in": [
+              "{{user.id}}"
+            ]
+          }
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "delete": {
+      "$or": [
+        {
+          "created_by_id": "{{user.id}}"
+        },
+        {
+          "data.members": {
+            "$in": [
+              "{{user.id}}"
+            ]
+          }
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    }
+  }
+}

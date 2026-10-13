@@ -1,0 +1,118 @@
+{
+  "name": "Reminder",
+  "type": "object",
+  "properties": {
+    "household_code": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "due_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "renewal",
+        "appointment",
+        "document",
+        "legal",
+        "other"
+      ],
+      "default": "other"
+    },
+    "document_id": {
+      "type": "string"
+    },
+    "case_id": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "done"
+      ],
+      "default": "pending"
+    },
+    "notes": {
+      "type": "string"
+    },
+    "shared": {
+      "type": "boolean",
+      "default": false
+    },
+    "workspace_id": {
+      "type": "string"
+    },
+    "members": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "household_code",
+    "title",
+    "due_date"
+  ],
+  "rls": {
+    "read": {
+      "$or": [
+        {
+          "created_by_id": "{{user.id}}"
+        },
+        {
+          "data.members": "{{user.id}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "create": {},
+    "update": {
+      "$or": [
+        {
+          "created_by_id": "{{user.id}}"
+        },
+        {
+          "data.members": {
+            "$in": [
+              "{{user.id}}"
+            ]
+          }
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "delete": {
+      "$or": [
+        {
+          "created_by_id": "{{user.id}}"
+        },
+        {
+          "data.members": {
+            "$in": [
+              "{{user.id}}"
+            ]
+          }
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    }
+  }
+}

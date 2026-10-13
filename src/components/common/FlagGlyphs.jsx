@@ -1,0 +1,34 @@
+import React from 'react';
+
+/**
+ * Simplified 3:2 flag artwork (Latin America + Puerto Rico), defined once and
+ * reused by <FlagBanner />. Purely decorative artwork — no text, no state.
+ */
+export default function FlagGlyphs() {
+  return (
+    <svg width="0" height="0" className="absolute" aria-hidden="true" focusable="false">
+      <polygon id="flagStar" points="0,-1 .2245,-.309 .951,-.309 .363,.118 .588,.809 0,.382 -.588,.809 -.363,.118 -.951,-.309 -.2245,-.309" />
+      <symbol id="flagAr" viewBox="0 0 30 20"><rect width="30" height="20" fill="#74ACDF" /><rect y="6.67" width="30" height="6.66" fill="#fff" /><circle cx="15" cy="10" r="2.4" fill="#F6B40E" /></symbol>
+      <symbol id="flagBo" viewBox="0 0 30 20"><rect width="30" height="6.67" fill="#D52B1E" /><rect y="6.67" width="30" height="6.66" fill="#F9E300" /><rect y="13.33" width="30" height="6.67" fill="#007A33" /></symbol>
+      <symbol id="flagBr" viewBox="0 0 30 20"><rect width="30" height="20" fill="#009C3B" /><polygon points="15,2 27.5,10 15,18 2.5,10" fill="#FFDF00" /><circle cx="15" cy="10" r="4.5" fill="#002776" /><path d="M10.8 9.2Q15 7.6 19.2 10.8" fill="none" stroke="#fff" strokeWidth=".7" /></symbol>
+      <symbol id="flagCl" viewBox="0 0 30 20"><rect width="30" height="20" fill="#fff" /><rect y="10" width="30" height="10" fill="#D52B1E" /><rect width="10" height="10" fill="#0039A6" /><use href="#flagStar" transform="translate(5 5) scale(2.8)" fill="#fff" /></symbol>
+      <symbol id="flagCo" viewBox="0 0 30 20"><rect width="30" height="10" fill="#FCD116" /><rect y="10" width="30" height="5" fill="#003893" /><rect y="15" width="30" height="5" fill="#CE1126" /></symbol>
+      <symbol id="flagCr" viewBox="0 0 30 20"><rect width="30" height="20" fill="#002B7F" /><rect y="3.33" width="30" height="13.34" fill="#fff" /><rect y="6.67" width="30" height="6.66" fill="#CE1126" /></symbol>
+      <symbol id="flagCu" viewBox="0 0 30 20"><rect width="30" height="20" fill="#002A8F" /><rect y="4" width="30" height="4" fill="#fff" /><rect y="12" width="30" height="4" fill="#fff" /><polygon points="0,0 13,10 0,20" fill="#CF142B" /><use href="#flagStar" transform="translate(4.2 10) scale(2.6)" fill="#fff" /></symbol>
+      <symbol id="flagEc" viewBox="0 0 30 20"><rect width="30" height="10" fill="#FFDD00" /><rect y="10" width="30" height="5" fill="#034EA2" /><rect y="15" width="30" height="5" fill="#ED1C24" /></symbol>
+      <symbol id="flagSv" viewBox="0 0 30 20"><rect width="30" height="20" fill="#0F47AF" /><rect y="6.67" width="30" height="6.66" fill="#fff" /><circle cx="15" cy="10" r="2.3" fill="#fff" stroke="#3A8F3A" strokeWidth=".6" /></symbol>
+      <symbol id="flagGt" viewBox="0 0 30 20"><rect width="30" height="20" fill="#4997D0" /><rect x="10" width="10" height="20" fill="#fff" /><circle cx="15" cy="10" r="2.2" fill="none" stroke="#3A7D44" strokeWidth=".7" /></symbol>
+      <symbol id="flagHt" viewBox="0 0 30 20"><rect width="30" height="10" fill="#00209F" /><rect y="10" width="30" height="10" fill="#D21034" /><rect x="11" y="7" width="8" height="6" fill="#fff" /><circle cx="15" cy="10" r="1.3" fill="#016A16" /></symbol>
+      <symbol id="flagHn" viewBox="0 0 30 20"><rect width="30" height="20" fill="#0073CF" /><rect y="6.67" width="30" height="6.66" fill="#fff" /><g fill="#0073CF"><use href="#flagStar" transform="translate(12 8.8) scale(.8)" /><use href="#flagStar" transform="translate(18 8.8) scale(.8)" /><use href="#flagStar" transform="translate(15 10) scale(.8)" /><use href="#flagStar" transform="translate(12 11.2) scale(.8)" /><use href="#flagStar" transform="translate(18 11.2) scale(.8)" /></g></symbol>
+      <symbol id="flagMx" viewBox="0 0 30 20"><rect width="30" height="20" fill="#CE1126" /><rect width="20" height="20" fill="#fff" /><rect width="10" height="20" fill="#006847" /><circle cx="15" cy="10" r="2.4" fill="#A47A38" /></symbol>
+      <symbol id="flagNi" viewBox="0 0 30 20"><rect width="30" height="20" fill="#0067C6" /><rect y="6.67" width="30" height="6.66" fill="#fff" /><polygon points="15,7.9 17.4,12.1 12.6,12.1" fill="none" stroke="#2E7D32" strokeWidth=".6" /></symbol>
+      <symbol id="flagPa" viewBox="0 0 30 20"><rect width="30" height="20" fill="#fff" /><rect x="15" width="15" height="10" fill="#D21034" /><rect y="10" width="15" height="10" fill="#005293" /><use href="#flagStar" transform="translate(7.5 5) scale(2.8)" fill="#005293" /><use href="#flagStar" transform="translate(22.5 15) scale(2.8)" fill="#D21034" /></symbol>
+      <symbol id="flagPy" viewBox="0 0 30 20"><rect width="30" height="6.67" fill="#D52B1E" /><rect y="6.67" width="30" height="6.66" fill="#fff" /><rect y="13.33" width="30" height="6.67" fill="#0038A8" /><circle cx="15" cy="10" r="2.2" fill="none" stroke="#2E7D32" strokeWidth=".6" /></symbol>
+      <symbol id="flagPe" viewBox="0 0 30 20"><rect width="30" height="20" fill="#D91023" /><rect x="10" width="10" height="20" fill="#fff" /><circle cx="15" cy="10" r="2" fill="#8A6D3B" /></symbol>
+      <symbol id="flagPr" viewBox="0 0 30 20"><rect width="30" height="20" fill="#ED0000" /><rect y="4" width="30" height="4" fill="#fff" /><rect y="12" width="30" height="4" fill="#fff" /><polygon points="0,0 13,10 0,20" fill="#0050F0" /><use href="#flagStar" transform="translate(4.2 10) scale(2.6)" fill="#fff" /></symbol>
+      <symbol id="flagDo" viewBox="0 0 30 20"><rect width="30" height="20" fill="#fff" /><rect width="13" height="8" fill="#002D62" /><rect x="17" width="13" height="8" fill="#CE1126" /><rect y="12" width="13" height="8" fill="#CE1126" /><rect x="17" y="12" width="13" height="8" fill="#002D62" /><circle cx="15" cy="10" r="2" fill="#fff" stroke="#3A7D44" strokeWidth=".6" /></symbol>
+      <symbol id="flagUy" viewBox="0 0 30 20"><rect width="30" height="20" fill="#fff" /><g fill="#0038A8"><rect y="2.22" width="30" height="2.22" /><rect y="6.67" width="30" height="2.22" /><rect y="11.11" width="30" height="2.22" /><rect y="15.56" width="30" height="2.22" /></g><rect width="11.11" height="11.11" fill="#fff" /><circle cx="5.55" cy="5.55" r="2.6" fill="#FCD116" /></symbol>
+      <symbol id="flagVe" viewBox="0 0 30 20"><rect width="30" height="6.67" fill="#FFCC00" /><rect y="6.67" width="30" height="6.66" fill="#00247D" /><rect y="13.33" width="30" height="6.67" fill="#CF142B" /><g fill="#fff"><use href="#flagStar" transform="translate(20.17 12.12) scale(.8)" /><use href="#flagStar" transform="translate(19.21 10.46) scale(.8)" /><use href="#flagStar" transform="translate(17.75 9.24) scale(.8)" /><use href="#flagStar" transform="translate(15.95 8.58) scale(.8)" /><use href="#flagStar" transform="translate(14.05 8.58) scale(.8)" /><use href="#flagStar" transform="translate(12.25 9.24) scale(.8)" /><use href="#flagStar" transform="translate(10.79 10.46) scale(.8)" /><use href="#flagStar" transform="translate(9.83 12.12) scale(.8)" /></g></symbol>
+    </svg>
+  );
+}

@@ -1,0 +1,71 @@
+{
+  "name": "CommunityAlert",
+  "type": "object",
+  "properties": {
+    "title_es": {
+      "type": "string"
+    },
+    "title_en": {
+      "type": "string"
+    },
+    "body_es": {
+      "type": "string"
+    },
+    "body_en": {
+      "type": "string"
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "policy",
+        "clinic",
+        "aid",
+        "resource"
+      ],
+      "default": "resource"
+    },
+    "boroughs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "source_org": {
+      "type": "string"
+    },
+    "verified": {
+      "type": "boolean",
+      "default": true
+    },
+    "published_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "link": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "title_es",
+    "category",
+    "source_org"
+  ],
+  "rls": {
+    "read": {},
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}
